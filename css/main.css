@@ -378,3 +378,55 @@ h1 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+#askPort {
+  background: #38434d;
+  color: #fcfcfb;
+  min-height: 20px;
+}
+.controlPannel4user {
+  border-top: 1px solid #FF8A55;
+  text-align: center;
+}
+.menuRoundBTN {
+  background: #848c94;
+  border-radius: 50px;
+  padding: 8px;
+  border: none;
+  color: #fcfcfb;
+  font-size: 18px;
+  font-weight: lighter;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
+  min-width: 100px;
+}
+.menuRoundBTN:disabled {
+  background: #fcfcfb;
+  color: #38434d;
+}
+.profImg {
+  border-radius: 50%;
+}
+#profTopPort {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.contactBtn {
+  color: #FFF;
+  background-color: #0095ff;
+  border: 1px solid #07c;
+  font-size: 18px;
+  font-weight: lighter;
+  box-shadow: inset 0 1px 0 #66bfff;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  outline: none;
+}
