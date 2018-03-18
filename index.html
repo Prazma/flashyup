@@ -7,18 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
     <script src="js/ui.js"></script>
     <script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
-    <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyDOSZAiZmgwal-NltqsbPw4QS9SS831N20",
-      authDomain: "peer2peer-60587.firebaseapp.com",
-      databaseURL: "https://peer2peer-60587.firebaseio.com",
-      projectId: "peer2peer-60587",
-      storageBucket: "peer2peer-60587.appspot.com",
-      messagingSenderId: "30761206221"
-    };
-    firebase.initializeApp(config);
-  </script>
   </head>
   <body>
     <div id="splash">
@@ -84,10 +72,34 @@
           <button id="testbtn" class="mainbtn">Take Test</button>
         </div>
       </div>
+      <div id="askPort" style="display: none">
+        <div id="profTopPort">
+          <div style="height: 20px;"></div>
+          <img class="profImg" height="80px" width="80px" src="img/gtg.jpeg">
+          <div id="guestUserContent">
+            <span>Looks like you haven't logged in yet.<br>Login to ask and answer questions to earn more Gold!</span><br>
+            <button class="contactBtn">Login</button>
+            <button class="contactBtn">Create Account</button>
+          </div>
+          <div id="loggedUserContent" style="display: none;">
+
+          </div>
+        </div>
+        <div id="userProf">
+          <div class="controlPannel4user">
+            <button class="menuRoundBTN" disabled>Questions</button>
+            <button class="menuRoundBTN">Ask</button>
+            <button class="menuRoundBTN">Ranking</button>
+          </div>
+        </div>
+        <div id="socialContent">
+          <!--Pretty important stuff goes here-->
+        </div>
+      </div>
       <div id="bottomMenu">
         <button id="profileBtn" class="tabBtn bluebtn">
           <svg aria-label="stars" class="octicon-blue" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg><br>
-          Profile
+          Ask
         </button>
         <button id="learnBtn" class="tabBtn bluebtn" disabled>
           <svg aria-hidden="true" class="ocitcon-blue" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"></path></svg><br>
@@ -120,7 +132,7 @@
         </button>
       </div>
       <div id="levelport">
-        <div class="bluebtn" style="border-bottom: 1px solid #2cbedb">
+        <div id="learnWrap" class="bluebtn">
           <span class="learnHeader" id="learnWhatLabel">Vocabulary</span><br>
         </div>
         <div class="disBrokenWrapper">
@@ -130,7 +142,7 @@
           <div class="portLevel">
             <span class="levelSpan">Level <span id="userCategoryLevelNumber">0</span></span>
           </div>
-          <button class="portbtn">Start Level</button>
+          <button class="portbtn" onclick="opnplayport()">Start Level</button>
         </div>
       </div>
       <div id="cardport">
@@ -138,15 +150,8 @@
       </div>
     </div>
 
-    <div id="loginport" style="display: none;">
-      <div class="eightwrap">
-        <br><br>
-        <span class="headerLog">Welcome to FlashyUp!</span><br>
-        <span>Learn Japanese Online</span><br><br>
-        <button class="whitetransbtn">Take the Tour</button><br>
-        <button class="whitetransbtn">My Profile</button>
-      </div>
-      <br><span class="credits">FlashyUp by Prazma</span><br><br>
+    <div id="authControlPort">
+      
     </div>
     <div id="shadow" style="display: none"></div>
   </body>
