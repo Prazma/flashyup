@@ -139,16 +139,41 @@ function changeTabColor() {
 }
 
 strtbtn.onclick = function () {
+  var label = document.getElementById("learnWhatLabel");
   document.getElementById("learnport").style.display = "block";
   setTimeout( function () {
     document.getElementById("learnport").style.opacity = "1";
     document.getElementById("learnport").style.height = "100vh";
   }, 200 )
+  if( colorFL == "blue" ) {
+    label.innerHTML = "Vocabulary";
+    document.getElementById("learnWrap").style.background = "#30ddff";
+  } else if ( colorFL == "green" ) {
+    label.innerHTML = "Grammer";
+    document.getElementById("learnWrap").style.background = "#8BC34A";
+  } else if ( colorFL == "orange" ) {
+    label.innerHTML = "Reading";
+    document.getElementById("learnWrap").style.background = "#FF9800";
+  }
 }
+
 function closeLearnport() {
   document.getElementById("learnport").style.opacity = "0";
   document.getElementById("learnport").style.height = "0";
   setTimeout( function () {
     document.getElementById("learnport").style.display = "none";
   }, 200 )
+}
+
+profileBtn.onclick = function () {
+  profileBtn.disabled = true;
+  learnbtn.disabled = false;
+  document.getElementById("sectorOne").style.display = "none";
+  document.getElementById("askPort").style.display = "block";
+}
+learnbtn.onclick = function () {
+  profileBtn.disabled = false;
+  learnbtn.disabled = true;
+  document.getElementById("sectorOne").style.display = "block";
+  document.getElementById("askPort").style.display = "none";
 }
