@@ -74,17 +74,26 @@
       </div>
       <div id="askPort" style="display: none">
         <div id="profTopPort">
-          <div style="height: 20px;"></div>
-          <img class="profImg" height="80px" width="80px" src="img/gtg.jpeg">
-          <div id="guestUserContent">
-            <span>Looks like you haven't logged in yet.<br>Login to ask and answer questions to earn more Gold!</span><br>
-            <button class="contactBtn">Login</button>
-            <button class="contactBtn">Create Account</button>
-          </div>
-          <div id="loggedUserContent" style="display: none;">
+          <div id="openedProfCont">
+            <div style="height: 20px;"></div>
+            <img class="profImg" height="80px" width="80px" src="img/gtg.jpeg">
+            <div id="guestUserContent">
+              <span>Looks like you haven't logged in yet.<br>Login to ask and answer questions to earn more Gold!</span><br>
+              <button class="contactBtn">Login</button>
+              <button class="contactBtn">Create Account</button>
+            </div>
+            <div id="loggedUserContent" style="display: none;">
 
+            </div>
+          </div>
+          <div id="closedProfCont" style="display: none">
+            <div style="height: 20px;"></div>
+            <img class="profImg" height="30px" width="30px" src="img/gtg.jpeg">
           </div>
         </div>
+        <button id="shutterbtn" class="ocbtn">
+            <img id="ocContMode" height="24px" width="24px" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsMTk1LjI4NUwxNDkuMDI4LDYyLjI0Yy0xLjkwMS0xLjkwMy00LjA4OC0yLjg1Ni02LjU2Mi0yLjg1NnMtNC42NjUsMC45NTMtNi41NjcsMi44NTZMMi44NTYsMTk1LjI4NSAgIEMwLjk1LDE5Ny4xOTEsMCwxOTkuMzc4LDAsMjAxLjg1M2MwLDIuNDc0LDAuOTUzLDQuNjY0LDIuODU2LDYuNTY2bDE0LjI3MiwxNC4yNzFjMS45MDMsMS45MDMsNC4wOTMsMi44NTQsNi41NjcsMi44NTQgICBjMi40NzQsMCw0LjY2NC0wLjk1MSw2LjU2Ny0yLjg1NGwxMTIuMjA0LTExMi4yMDJsMTEyLjIwOCwxMTIuMjA5YzEuOTAyLDEuOTAzLDQuMDkzLDIuODQ4LDYuNTYzLDIuODQ4ICAgYzIuNDc4LDAsNC42NjgtMC45NTEsNi41Ny0yLjg0OGwxNC4yNzQtMTQuMjc3YzEuOTAyLTEuOTAyLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY2ICAgQzI4NC45MjksMTk5LjM3OCwyODMuOTg0LDE5Ny4xODgsMjgyLjA4MiwxOTUuMjg1eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+        </button>
         <div id="userProf">
           <div class="controlPannel4user">
             <button class="menuRoundBTN" disabled>Questions</button>
@@ -143,7 +152,8 @@
             <span class="levelSpan">Level <span id="userCategoryLevelNumber">0</span></span>
           </div>
           <button class="portbtn" onclick="opnplayport()">Start Level</button>
-        </div>
+        </div><br>
+        <span id="progressAlert">To save your progress, you need to Login</span>
       </div>
       <div id="cardport">
 
@@ -151,7 +161,7 @@
     </div>
 
     <div id="authControlPort">
-      
+
     </div>
     <div id="shadow" style="display: none"></div>
   </body>
