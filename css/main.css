@@ -430,3 +430,9 @@ h1 {
   margin-bottom: 10px;
   outline: none;
 }
+.ocbtn {
+  background: transparent;
+  width: 100%;
+  border: none;
+  outline: none;
+}
