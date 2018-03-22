@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>FlashUp</title>
+    <title>FlashyUp</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
@@ -40,7 +40,7 @@
             </div>
           </div>
 
-          <div class="statsBox" id="gramStatus">
+          <div class="statsBox" id="gramStatus" style="left: 1280px;">
             <h1 class="sectorHeader">Grammer</h1><br>
             Level 1
             <div class="progressWrapper">
@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <div class="statsBox" id="readStatus">
+          <div class="statsBox" id="readStatus" style="left: -1280px;">
             <h1 class="sectorHeader">Reading</h1><br>
             <div style="margin-bottom: 10px;">
               <span class="statsText">Comming Soon!</span>
@@ -79,16 +79,18 @@
             <img class="profImg" height="80px" width="80px" src="img/gtg.jpeg">
             <div id="guestUserContent">
               <span>Looks like you haven't logged in yet.<br>Login to ask and answer questions to earn more Gold!</span><br>
-              <button class="contactBtn">Login</button>
+              <button id="loginSNSbtn" class="contactBtn">Login</button>
               <button class="contactBtn">Create Account</button>
             </div>
             <div id="loggedUserContent" style="display: none;">
-
+              <span id="usernameBig"></span><br>
+              <span style="color: #ffcc04; font-size: 30px;">Gold </span><span style="font-size: 30px;">0</span>
+              <button class="transWhbtn">+</button>
             </div>
           </div>
           <div id="closedProfCont" style="display: none">
             <div style="height: 20px;"></div>
-            <img class="profImg" height="30px" width="30px" src="img/gtg.jpeg">
+            <img class="profImg" height="30px" width="30px" src="img/gtg.jpeg"><br><span id="usernameMini"></span>
           </div>
         </div>
         <button id="shutterbtn" class="ocbtn">
@@ -97,7 +99,7 @@
         <div id="userProf">
           <div class="controlPannel4user">
             <button class="menuRoundBTN" disabled>Questions</button>
-            <button class="menuRoundBTN">Ask</button>
+            <button class="menuRoundBTN">Account</button>
             <button class="menuRoundBTN">Ranking</button>
           </div>
         </div>
@@ -115,9 +117,6 @@
           Learn
         </button>
       </div>
-    </div>
-    <div id="tutorial" style="display: none; opacity: 0;">
-
     </div>
     <script>
       window.onload = function() {
@@ -159,10 +158,77 @@
 
       </div>
     </div>
-
+    <div id="loginModal">
+      <h2>Login</h2>
+      <div class="loginSquareWrapper">
+        <div class="wrap80">
+          <br><span>Email</span><br>
+          <input class="authInput"  placeholder="you@example.com">
+          <div style="height: 5px"></div>
+          <span>Password</span><br>
+          <input type="password" class="authInput" placeholder="******">
+          <br>
+        </div>
+        <button class="loginBtnBlue">Login</button>
+      </div>
+      <div class="loginSquareWrapper">
+        <div style="height: 10px"></div>
+        <div class="wrap80">
+          <span>Don't have an account?</span><br>
+        </div>
+        <button onclick="caccountPageOpn()" class="loginBtnBlue">Create Account</button>
+      </div>
+    </div>
+    <div id="signupModal" style="display: none;">
+      <h2>Create an Account</h2>
+      <div class="loginSquareWrapper">
+        <div class="wrap80">
+          <br><span>Username</span><br>
+          <input class="authInput" id="newusername"  placeholder="Your Username">
+          <div style="height: 5px"></div>
+          <span>Email</span><br>
+          <input class="authInput" id="newemail"  placeholder="you@example.com">
+          <div style="height: 5px"></div>
+          <span>Password</span><br>
+          <input type="password" id="newpassword" class="authInput" placeholder="******">
+          <br>
+        </div>
+        <button class="loginBtnBlue" onclick="signup()" >Create Account</button>
+      </div>
+      <div class="loginSquareWrapper">
+        <div style="height: 10px"></div>
+        <div class="wrap80">
+          <span>Have an account?</span><br>
+        </div>
+        <button onclick="loginPageOpn()" class="loginBtnBlue">Login</button>
+      </div>
+    </div>
+    <div id="loggedinModal" style="display: none;">
+      <div class="loginSquareWrapper">
+        <div class="wrap80">
+          <h3>You are now logged in!</h3><br>
+          <button class="loginBtnBlue">Get Started</button>
+        </div>
+      </div>
+    </div>
     <div id="authControlPort">
 
     </div>
     <div id="shadow" style="display: none"></div>
+    <script src="js/server.js"></script>
+    <script>
+      var signupModal = document.getElementById("signupModal");
+      var loginModal = document.getElementById("loginModal");
+
+      function caccountPageOpn() {
+        signupModal.style.display = "block";
+        loginModal.style.display = "none";
+      }
+
+      function loginPageOpn() {
+        signupModal.style.display = "none";
+        loginModal.style.display = "block";
+      }
+    </script>
   </body>
 </html>
