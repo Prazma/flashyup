@@ -1,236 +1,112 @@
 <!doctype html>
 <html>
-  <head>
-    <title>FlashyUp</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
-    <script src="js/ui.js"></script>
-    <script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
-  </head>
-  <body>
-    <div id="splash">
-      <div class="onekind">
-        <button id="splashCard" class="logoIcon">あ</button><br>
-        <h1 id="splashLogo" class="logo">FlashyUp</h1>
-        <h2 id="splashDesc" class="subtext">Simple Japanese Speed Learning</h2>
-        <div class="loader loader--style3" title="2">
-          <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-            <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
-              <animateTransform attributeType="xml"
-              attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
-            </path>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div id="mainport">
-      <div id="sectorOne">
-
-        <div id="userStatus">
-          <div class="statsBox" id="vocabStatus">
-            <h1 class="sectorHeader">Vocabulary</h1><br>
-            Level 1
-            <div class="progressWrapper">
-              <div class="untilProgress"></div>
-            </div>
-            <div style="margin-bottom: 10px;">
-              <span class="statsText"><span id="cardsLeft">0</span> cards left until <span id="nextLevel">Next Level</span></span>
-              <br><br>
-            </div>
-          </div>
-
-          <div class="statsBox" id="gramStatus" style="left: 1280px;">
-            <h1 class="sectorHeader">Grammer</h1><br>
-            Level 1
-            <div class="progressWrapper">
-              <div class="untilProgress"></div>
-            </div>
-            <div style="margin-bottom: 10px;">
-              <span class="statsText"><span id="cardsLeft">0</span> cards left until <span id="nextLevel">Next Level</span></span>
-              <br><br>
-            </div>
-          </div>
-
-          <div class="statsBox" id="readStatus" style="left: -1280px;">
-            <h1 class="sectorHeader">Reading</h1><br>
-            <div style="margin-bottom: 10px;">
-              <span class="statsText">Comming Soon!</span>
-            </div>
-          </div>
-
-          <button id="lefty" class="leftbtn" onclick="right()" style="display: none;">
-            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTM2MC43MzEsMjI5LjA3NWwtMjI1LjEtMjI1LjFjLTUuMy01LjMtMTMuOC01LjMtMTkuMSwwcy01LjMsMTMuOCwwLDE5LjFsMjE1LjUsMjE1LjVsLTIxNS41LDIxNS41ICAgYy01LjMsNS4zLTUuMywxMy44LDAsMTkuMWMyLjYsMi42LDYuMSw0LDkuNSw0YzMuNCwwLDYuOS0xLjMsOS41LTRsMjI1LjEtMjI1LjFDMzY1LjkzMSwyNDIuODc1LDM2NS45MzEsMjM0LjI3NSwzNjAuNzMxLDIyOS4wNzV6ICAgIiBmaWxsPSIjMDAwMDAwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
-          </button>
-          <button id="righty" class="rightbtn" onclick="left()" style="display: none;">
-            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTE0NS4xODgsMjM4LjU3NWwyMTUuNS0yMTUuNWM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMXMtMTMuOC01LjMtMTkuMSwwbC0yMjUuMSwyMjUuMWMtNS4zLDUuMy01LjMsMTMuOCwwLDE5LjFsMjI1LjEsMjI1ICAgYzIuNiwyLjYsNi4xLDQsOS41LDRzNi45LTEuMyw5LjUtNGM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMUwxNDUuMTg4LDIzOC41NzV6IiBmaWxsPSIjMDAwMDAwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
-          </button>
-        </div>
-
-        <div id="userSelect">
-          <button id="strtbtn" class="mainbtn">Start Learning</button><br>
-          <button id="testbtn" class="mainbtn">Take Test</button>
-        </div>
-      </div>
-      <div id="askPort" style="display: none">
-        <div id="profTopPort">
-          <div id="openedProfCont">
-            <div style="height: 20px;"></div>
-            <img class="profImg" height="80px" width="80px" src="img/gtg.jpeg">
-            <div id="guestUserContent">
-              <span>Looks like you haven't logged in yet.<br>Login to ask and answer questions to earn more Gold!</span><br>
-              <button onclick="loginPageOpn()" id="loginSNSbtn" class="contactBtn">Login</button>
-              <button onclick="caacountPageOpn()" class="contactBtn">Create Account</button>
-            </div>
-            <div id="loggedUserContent" style="display: none;">
-              <span id="usernameBig"></span><br>
-              <span style="color: #04bfff; font-size: 30px;">Level </span><span style="font-size: 30px;">0</span><br>
-              <span style="color: #ffcc04; font-size: 30px;">Gold </span><span style="font-size: 30px;">0</span>
-              <button class="transWhbtn">+</button>
-            </div>
-          </div>
-          <div id="closedProfCont" style="display: none">
-            <div style="height: 20px;"></div>
-            <img class="profImg" height="30px" width="30px" src="img/gtg.jpeg"><br><span id="usernameMini"></span>
-          </div>
-        </div>
-        <button id="shutterbtn" class="ocbtn">
-            <img id="ocContMode" height="24px" width="24px" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsMTk1LjI4NUwxNDkuMDI4LDYyLjI0Yy0xLjkwMS0xLjkwMy00LjA4OC0yLjg1Ni02LjU2Mi0yLjg1NnMtNC42NjUsMC45NTMtNi41NjcsMi44NTZMMi44NTYsMTk1LjI4NSAgIEMwLjk1LDE5Ny4xOTEsMCwxOTkuMzc4LDAsMjAxLjg1M2MwLDIuNDc0LDAuOTUzLDQuNjY0LDIuODU2LDYuNTY2bDE0LjI3MiwxNC4yNzFjMS45MDMsMS45MDMsNC4wOTMsMi44NTQsNi41NjcsMi44NTQgICBjMi40NzQsMCw0LjY2NC0wLjk1MSw2LjU2Ny0yLjg1NGwxMTIuMjA0LTExMi4yMDJsMTEyLjIwOCwxMTIuMjA5YzEuOTAyLDEuOTAzLDQuMDkzLDIuODQ4LDYuNTYzLDIuODQ4ICAgYzIuNDc4LDAsNC42NjgtMC45NTEsNi41Ny0yLjg0OGwxNC4yNzQtMTQuMjc3YzEuOTAyLTEuOTAyLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY2ICAgQzI4NC45MjksMTk5LjM3OCwyODMuOTg0LDE5Ny4xODgsMjgyLjA4MiwxOTUuMjg1eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
-        </button>
-        <div id="userProf">
-          <div class="controlPannel4user">
-            <button class="menuRoundBTN" disabled>Questions</button>
-            <button class="menuRoundBTN">Account</button>
-            <button class="menuRoundBTN">Ranking</button>
-          </div>
-        </div>
-        <div id="socialContent">
-          <!--Pretty important stuff goes here-->
-        </div>
-      </div>
-      <div id="bottomMenu">
-        <button id="profileBtn" class="tabBtn bluebtn">
-          <svg aria-label="stars" class="octicon-blue" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg><br>
-          Ask
-        </button>
-        <button id="learnBtn" class="tabBtn bluebtn" disabled>
-          <svg aria-hidden="true" class="ocitcon-blue" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"></path></svg><br>
-          Learn
-        </button>
-      </div>
-    </div>
-    <script>
-      window.onload = function() {
-        var wdt = window.innerWidth;
-        userstats.style.width = wdt + "px";
-        gramstats.style.left = wdt + "px";
-        readstats.style.left = -1 * wdt + "px";
-      }
-      window.onresize = function() {
-        var wdt = window.innerWidth;
-        userstats.style.width = wdt + "px";
-      }
-    </script>
-    <script src="js/ui.js"></script>
-
-    <!--learning port-->
-    <div id="learnport">
-      <div class="studyHead">
-        <button id="daredXatlearnport" onclick="closeLearnport()" class="redtopbtn">
-          <img height="30px" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDM0OC4zMzMgMzQ4LjMzNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzQ4LjMzMyAzNDguMzM0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTMzNi41NTksNjguNjExTDIzMS4wMTYsMTc0LjE2NWwxMDUuNTQzLDEwNS41NDljMTUuNjk5LDE1LjcwNSwxNS42OTksNDEuMTQ1LDAsNTYuODUgICBjLTcuODQ0LDcuODQ0LTE4LjEyOCwxMS43NjktMjguNDA3LDExLjc2OWMtMTAuMjk2LDAtMjAuNTgxLTMuOTE5LTI4LjQxOS0xMS43NjlMMTc0LjE2NywyMzEuMDAzTDY4LjYwOSwzMzYuNTYzICAgYy03Ljg0Myw3Ljg0NC0xOC4xMjgsMTEuNzY5LTI4LjQxNiwxMS43NjljLTEwLjI4NSwwLTIwLjU2My0zLjkxOS0yOC40MTMtMTEuNzY5Yy0xNS42OTktMTUuNjk4LTE1LjY5OS00MS4xMzksMC01Ni44NSAgIGwxMDUuNTQtMTA1LjU0OUwxMS43NzQsNjguNjExYy0xNS42OTktMTUuNjk5LTE1LjY5OS00MS4xNDUsMC01Ni44NDRjMTUuNjk2LTE1LjY4Nyw0MS4xMjctMTUuNjg3LDU2LjgyOSwwbDEwNS41NjMsMTA1LjU1NCAgIEwyNzkuNzIxLDExLjc2N2MxNS43MDUtMTUuNjg3LDQxLjEzOS0xNS42ODcsNTYuODMyLDBDMzUyLjI1OCwyNy40NjYsMzUyLjI1OCw1Mi45MTIsMzM2LjU1OSw2OC42MTF6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
-        </button>
-      </div>
-      <div id="levelport">
-        <div id="learnWrap" class="bluebtn">
-          <span class="learnHeader" id="learnWhatLabel">Vocabulary</span><br>
-        </div>
-        <div class="disBrokenWrapper">
-          <button class="leftSwitchbtn" disabled>Current Level</button><button class="rightSwitchbtn">Previous Levels</button>
-        </div>
-        <div id="currentlevelport">
-          <div class="portLevel">
-            <span class="levelSpan">Level <span id="userCategoryLevelNumber">0</span></span>
-          </div>
-          <button class="portbtn" onclick="opnplayport()">Start Level</button>
-        </div><br>
-        <span id="progressAlert">To save your progress, you need to Login</span>
-      </div>
-      <div id="cardport">
-
-      </div>
-    </div>
-    <div id="loginModal" style="display: none">
-      <h2>Login</h2>
-      <div class="loginSquareWrapper">
-        <div class="wrap80">
-          <br><span>Email</span><br>
-          <input id="loginEmailCred" class="authInput"  placeholder="you@example.com">
-          <div style="height: 5px"></div>
-          <span>Password</span><br>
-          <input id="loginPassCred" type="password" class="authInput" placeholder="******">
-          <br>
-          <i id="annoyingLoginErrorMessage" style="color: red; display: none;">Your email or password was wrong.</i>
-        </div>
-        <button class="loginBtnBlue" id="loginInitBtn" >Login</button>
-      </div>
-      <div class="loginSquareWrapper">
-        <div style="height: 10px"></div>
-        <div class="wrap80">
-          <span>Don't have an account?</span><br>
-        </div>
-        <button onclick="caccountPageOpn()" class="loginBtnBlue">Create Account</button>
-      </div>
-    </div>
-    <div id="signupModal" style="display: none;">
-      <h2>Create an Account</h2>
-      <div class="loginSquareWrapper">
-        <div class="wrap80">
-          <br><span>Username</span><br>
-          <input class="authInput" id="newusername"  placeholder="Your Username">
-          <div style="height: 5px"></div>
-          <span>Email</span><br>
-          <input class="authInput" id="newemail"  placeholder="you@example.com">
-          <div style="height: 5px"></div>
-          <span>Password</span><br>
-          <input type="password" id="newpassword" class="authInput" placeholder="******">
-          <br>
-        </div>
-        <button class="loginBtnBlue" onclick="signup()" >Create Account</button>
-      </div>
-      <div class="loginSquareWrapper">
-        <div style="height: 10px"></div>
-        <div class="wrap80">
-          <span>Have an account?</span><br>
-        </div>
-        <button onclick="loginPageOpn()" class="loginBtnBlue">Login</button>
-      </div>
-    </div>
-    <div id="loggedinModal" style="display: none;">
-      <div class="loginSquareWrapper">
-        <div class="wrap80">
-          <h3>You are now logged in!</h3><br>
-          <button class="loginBtnBlue">Get Started</button>
-        </div>
-      </div>
-    </div>
-    <div id="authControlPort">
-
-    </div>
-    <div id="shadow" style="display: none"></div>
-    <script src="js/server.js"></script>
-    <script>
-      var signupModal = document.getElementById("signupModal");
-      var loginModal = document.getElementById("loginModal");
-
-      function caccountPageOpn() {
-        signupModal.style.display = "block";
-        loginModal.style.display = "none";
-      }
-
-      function loginPageOpn() {
-        signupModal.style.display = "none";
-        loginModal.style.display = "block";
-      }
-    </script>
-  </body>
+	<head>
+		<title>FlashyUp</title>
+		<meta name="viewport"content="width=device-width, user-scalable=no">
+		<link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+		<script src="https://semantic-ui.com/javascript/library/jquery.min.js"></script>
+		<script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+		<script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
+		<style>
+			body {
+			margin: 0;
+			background: #F8F8F8;
+			}
+			.header {
+			margin-bottom: 1px solid #dddddd;
+			}
+			#mainMenuContent {
+			overflow: auto;
+			width: 90%;
+			margin-top: 10px;
+			margin-right: auto;
+			margin-left: auto;
+			}
+			.topMarg {
+			margin-top: 20px;
+			text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mainport">
+			<div class="ui masthead vertical segment" style="background: #fff; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);">
+				<button class="ui icon button">
+				<i class="icon user"></i>
+				</button>
+				<button class="ui basic button">FlashyUp</button>
+				<button class="ui icon button">
+				<i class="icon cog"></i>
+				</button>
+			</div>
+			<div id="mainMenuContent">
+				<div class="ui top attached tabular menu">
+					<a class="item active" data-tab="first">Learn</a>
+					<a class="item" data-tab="second">Social</a>
+				</div>
+				
+				<div class="ui bottom attached tab segment active" data-tab="first">
+					<div class="topMarg">
+						<div class="ui labeled button" tabindex="0">
+							<div class="ui red button">
+								<i class="pen square icon"></i> Vocabulary
+							</div>
+							<a id="vocabLevelMainMenu" class="ui basic red left pointing label">
+							Level 0
+							</a>
+						</div>
+						<div class="ui labeled button" tabindex="0">
+							<div class="ui orange button">
+								<i class="pen square icon"></i> Grammer
+							</div>
+							<a id="vocabLevelMainMenu" class="ui basic orange left pointing label">
+							Level 0
+							</a>
+						</div>
+					</div>
+					<div class="ui divider" style="width: 80%; margin-right: auto; margin-left: auto;"></div>
+					<div class="topMarg">
+						<div class="ui labeled button" tabindex="0">
+							<div class="ui purple button">
+								<i class="pen square icon"></i> More of Japan
+							</div>
+							<a id="vocabLevelMainMenu" class="ui basic purple left pointing label">
+							Premium
+							</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui bottom attached tab segment" data-tab="second">
+					im still making this feature<br>
+					man, my boss is gonna kill me for changing the user interface...<br>
+					<button class="ui basic button"><strong>Donate</strong> me some money to escape for my boss, and help me work on this new feature</button>
+				</div>
+				
+			</div>
+			<script>
+				var datavase = new Firebase("https://peer2peer-60587.firebaseio.com");
+				var eccount = [];
+				var pccount = [];
+				
+				var vaseUpdate = function () {
+					datavase.on("child_added", function(snapshot) {
+						var vase = snapshot.val();
+						if( vase.datatype == "account" ) {
+							eccount.push( vase.email );
+							pccount.push( vase.password );
+						}
+					});
+				}
+				
+				$('.menu .item').tab();
+				
+				window.onload = function () {
+					//adjust the height of main content for best ui responsive experience
+					var configHeight = window.innerHeight - 75;
+					document.getElementById("mainMenuContent").style.height = configHeight + "px";
+				}
+			</script>
+		</div>
+	</body>
 </html>
