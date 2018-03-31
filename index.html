@@ -26,6 +26,25 @@
 			margin-top: 20px;
 			text-align: center;
 			}
+			#learnport {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
+				background: #fff;
+				overflow: auto;
+				z-index: 100;
+			}
+			#levelPortContent {
+				width: 90%;
+				margin-right: auto;
+				margin-left: auto;
+				margin-top: 10px;
+			}
+			div {
+				margin-top: 10px; !important
+			}
 		</style>
 	</head>
 	<body>
@@ -47,7 +66,8 @@
 				
 				<div class="ui bottom attached tab segment active" data-tab="first">
 					<div class="topMarg">
-						<div class="ui labeled button" tabindex="0">
+						
+						<div class="ui labeled button" tabindex="0" style="margin-top: 10px;" onclick="openLearnProgram('vocab')">
 							<div class="ui red button">
 								<i class="pen square icon"></i> Vocabulary
 							</div>
@@ -55,9 +75,8 @@
 							Level 0
 							</a>
 						</div>
-					</div>
-					<div class="topMarg">
-						<div class="ui labeled button" tabindex="0">
+						
+						<div class="ui labeled button" tabindex="0" style="margin-top: 10px;">
 							<div class="ui orange button">
 								<i class="pen square icon"></i> Grammer
 							</div>
@@ -65,6 +84,7 @@
 							Level 0
 							</a>
 						</div>
+						
 					</div>
 					<div class="ui divider" style="width: 80%; margin-right: auto; margin-left: auto;"></div>
 					<div class="topMarg">
@@ -82,10 +102,48 @@
 				<div class="ui bottom attached tab segment" data-tab="second">
 					im still making this feature<br>
 					man, my boss is gonna kill me for changing the user interface...<br>
-					<button class="ui basic button"><strong>Donate</strong> me some money to escape for my boss, and help me work on this new feature</button>
+					<button class="ui basic button"><strong>Donate</strong> me some money to escape from my boss, and help me work on this new feature</button>
 				</div>
 				
 			</div>
+			
+			<div id="learnport">
+				<div class="ui masthead vertical segment" style="background: #fff; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);">
+					<button class="ui basic button">Select a Level</button>
+					<div class="ui button" tabindex="0" onclick="closeLearnProgram()">
+						Go Back
+					</div>
+				</div>
+				<div id="levelPortContent">
+					<h1>null</h1>
+					<div class="ui top attached tabular menu">
+						<a class="active item" data-tab="currentLevel">Current Level</a>
+						<a class="item" data-tab="completedLevel">Completed Levels</a>
+					</div>
+					<div class="ui bottom attached active tab segment" data-tab="currentLevel" style="text-align: center;">
+						<button class="ui labeled icon button">
+							<i class="play icon"></i>
+							Level 1
+						</button>
+					</div>
+					<div class="ui bottom attached tab segment" data-tab="completedLevel">
+						you douchebag. you havnt completed anything.
+					</div>
+				</div>
+			</div>
+			<!--javascript containing function ui control and etc-->
+			<script>
+				function openLearnProgram() {
+					$('#learnport').transition('scale');
+				}
+				
+				function closeLearnProgram() {
+					$('#learnport').transition('scale');
+				}
+			</script>
+			
+			
+			<!--config javascript script-->
 			<script>
 				var datavase = new Firebase("https://peer2peer-60587.firebaseio.com");
 				var eccount = [];
@@ -107,6 +165,9 @@
 					//adjust the height of main content for best ui responsive experience
 					var configHeight = window.innerHeight - 75;
 					document.getElementById("mainMenuContent").style.height = configHeight + "px";
+					
+					//hide windows
+					$('#learnport').transition('scale');
 				}
 			</script>
 		</div>
