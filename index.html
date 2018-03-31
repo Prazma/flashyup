@@ -48,7 +48,7 @@
 	<body>
 		<div id="mainport">
 			<div class="ui masthead vertical segment" style="background: #fff; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);">
-				<button class="ui icon button">
+				<button class="ui icon button accountSetLauncher">
 				<i class="icon user"></i>
 				</button>
 				<button class="ui basic button">FlashyUp</button>
@@ -103,6 +103,9 @@
 					<button class="ui basic button"><strong>Donate</strong> me some money to escape from my boss, and help me work on this new feature</button>
 				</div>
 				
+				<div id="loginToSaveBanner">
+					<button class="ui button accountSetLauncher"><strong>Login or Create Account</strong><br>to save progress</button>
+				</div>
 			</div>
 			
 			<div id="learnport">
@@ -140,6 +143,10 @@
 				function closeLearnProgram() {
 					$('#learnport').transition('scale');
 				}
+				
+				$('.accountSetLauncher').click(function() {
+					$('#accountControlPort').modal('show');
+				});
 			</script>
 			
 			
@@ -185,5 +192,38 @@
 				}
 			</script>
 		</div>
+		
+		<!--the login section-->
+		<div class="ui modal" id="accountControlPort">
+			<i class="close icon"></i>
+			<div class="header">
+				<h1 class="ui header">Login to FlashyUp</h1>
+			</div>
+			<div class="image content">
+				
+				<div class="ui labeled input" style="margin-top: 10px; margin-right: 10px; margin-left: 10px;">
+					<div class="ui label">
+						Username
+					</div>
+					<input type="text" placeholder="Enter Here">
+				</div>
+				
+				<div class="ui labeled input" style="margin-top: 10px; margin-right: 10px; margin-left: 10px;">
+					<div class="ui label">
+						Password
+					</div>
+					<input type="password" placeholder="Enter Here">
+				</div>
+				
+			</div>
+			<div class="actions">
+				<div class="ui buttons">
+					<button class="ui button">Login</button>
+					<div class="or"></div>
+					<button class="ui positive button">Sign up</button></div>
+			</div>
+		</div>
+		
+		
 	</body>
 </html>
