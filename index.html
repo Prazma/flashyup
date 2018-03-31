@@ -78,7 +78,7 @@
 							<div class="ui orange button">
 								<i class="pen square icon"></i> Grammer
 							</div>
-							<a id="vocabLevelMainMenu" class="ui basic orange left pointing label">
+							<a id="grammerLevelMainMenu" class="ui basic orange left pointing label">
 							Level 0
 							</a>
 						</div>
@@ -148,6 +148,20 @@
 				var datavase = new Firebase("https://peer2peer-60587.firebaseio.com");
 				var eccount = [];
 				var pccount = [];
+				if( localStorage.loggedIn == true ) {
+					
+				} else {
+					if( localStorage.guestUser ) {
+						document.getElementById("vocabLevelMainMenu").innerHTML = "Level " + localStorage.vocabLev;
+						document.getElementById("grammerLevelMainMenu").innerHTML = "Level " + localStorage.grammerLev;
+					} else {
+						localStorage.guestUser = true;
+						localStorage.vocabLev = 1;
+						localStorage.grammerLev = 1;
+						document.getElementById("vocabLevelMainMenu").innerHTML = "Level " + localStorage.vocabLev;
+						document.getElementById("grammerLevelMainMenu").innerHTML = "Level " + localStorage.grammerLev;
+					}
+				}
 				
 				var vaseUpdate = function () {
 					datavase.on("child_added", function(snapshot) {
