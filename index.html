@@ -172,11 +172,7 @@
 				
 				var vaseUpdate = function () {
 					datavase.on("child_added", function(snapshot) {
-						var vase = snapshot.val();
-						if( vase.datatype == "account" ) {
-							eccount.push( vase.email );
-							pccount.push( vase.password );
-						}
+						
 					});
 				}
 				
@@ -190,6 +186,8 @@
 					//hide windows
 					$('#learnport').transition('scale');
 				}
+				
+				vaseUpdate();
 			</script>
 		</div>
 		
