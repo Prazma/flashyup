@@ -153,8 +153,8 @@
 			<!--config javascript script-->
 			<script>
 				var datavase = new Firebase("https://peer2peer-60587.firebaseio.com");
-				var eccount = [];
-				var pccount = [];
+				var un = [];
+				var pw = [];
 				if( localStorage.loggedIn == true ) {
 					
 				} else {
@@ -170,9 +170,34 @@
 					}
 				}
 				
+				function signup() {
+					var usernameI = document.getElementById("usernamePort");
+					var passwordI = document.getElementById("passwordPort");
+					
+					datavase.push({ datatype:"account", un:usernameI, pw:passwordI });
+					
+					login();
+				}
+				
+				function login() {
+					var usernameI = document.getElementById("usernamePort");
+					var passwordI = document.getElementById("passwordPort");
+					
+					if( un.indexOf(usernameI) != -1 && un.indexOf(usernameI) == pw.indexOf(passwordI) ) {
+						
+					} else {
+						document.getElementById("errorAlert").style.display = "block";
+					}
+					
+				}
+				
 				var vaseUpdate = function () {
 					datavase.on("child_added", function(snapshot) {
-						
+						var vase = snapshot.val();
+						if( vase.datatype == "account" ) {
+							un.push( vase.un );
+							pw.push( vase.pw );
+						}
 					});
 				}
 				
@@ -203,23 +228,24 @@
 					<div class="ui label">
 						Username
 					</div>
-					<input type="text" placeholder="Enter Here">
+					<input type="text" id="usernamePort" placeholder="Enter Here">
 				</div>
 				
 				<div class="ui labeled input" style="margin-top: 10px; margin-right: 10px; margin-left: 10px;">
 					<div class="ui label">
 						Password
 					</div>
-					<input type="password" placeholder="Enter Here">
+					<input type="password" id="passwordPort" placeholder="Enter Here">
 				</div>
 				
 			</div>
 			<div class="actions">
 				<div class="ui buttons">
-					<button class="ui button">Login</button>
+					<button class="ui button" onclick="login()">Login</button>
 					<div class="or"></div>
-					<button class="ui positive button">Sign up</button></div>
-			</div>
+					<button class="ui positive button" onclick="signup()">Sign up</button></div>
+				</div>
+			<p id="errorAlert" class="ui red header" style="display: none">Wrong username or password</p>
 		</div>
 		
 		
